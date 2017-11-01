@@ -1,0 +1,17 @@
+.container
+  .col-sm-12
+    %h3 Dashboard
+    %table.table.table-bordered.table-striped
+      %tr
+        %th Request ID
+        %th Customer ID
+        %th Time elapsed(ago)
+        %th Status
+        %th Driver ID
+      - @requests.each do |request|
+        %tr
+          %td= request.id
+          %td= request.customer_id
+          %td= distance_of_time_in_words(request.time_elapsed)
+          %td= request.status_name
+          %td= request.driver_id

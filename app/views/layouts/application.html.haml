@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"}
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %meta{:content => "Taxi", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    %title= content_for?(:title) ? yield(:title) : "Taxi"
+
+    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      = javascript_include_tag "//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js", "//oss.maxcdn.com/respond/1.4.2/respond.min.js"
+    = stylesheet_link_tag "//fonts.googleapis.com/css?family=Open+Sans:400,600"
+    %link{rel: "manifest", href: "/assets/service-worker/manifest.json"}
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :rel => "stylesheet"}
+    = stylesheet_link_tag 'application', media: 'all'
+    = csrf_meta_tags
+  %body
+    .messages{style: "color:blue;font-size:20px;"}= flash[:alert] unless flash.blank?
+    = yield
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"}
+    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+    = javascript_include_tag 'application'
+    = yield :extra_js

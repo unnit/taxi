@@ -1,0 +1,15 @@
+.col-sm-12{style: "margin-bottom: 20px;", class: "ongoing-#{ongoing_request.id} request-cover"}
+  Request ID:
+  = ongoing_request.id
+  %br
+  Customer ID:
+  = ongoing_request.customer_id
+  %br
+  Requested at (ago):
+  = time_ago_in_words(ongoing_request.created_at)
+  %br
+  Picked at (ago):
+  = time_ago_in_words(ongoing_request.updated_at)
+  %br
+  = link_to complete_request_path(ongoing_request.id, driver_id: driver_id), remote: true do
+    .btn.btn-sm.btn-primary Complete

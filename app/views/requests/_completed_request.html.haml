@@ -1,0 +1,15 @@
+.col-sm-12{style: "margin-bottom: 20px;", class: "completed-#{completed_request.id} request-cover"}
+  Request ID:
+  = completed_request.id
+  %br
+  Customer ID:
+  = completed_request.customer_id
+  %br
+  Requested at (ago):
+  = time_ago_in_words(completed_request.created_at)
+  %br
+  Picked at (ago):
+  = time_ago_in_words(completed_request.updated_at)
+  %br
+  Completed at (ago):
+  = time_ago_in_words(completed_request.completed_at)

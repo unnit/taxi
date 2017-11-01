@@ -1,0 +1,13 @@
+.container
+  .col-sm-12{style: "margin-top: 100px;"}
+    %h3 Customer App
+    .col-sm-6
+      = form_for @request do |f|
+        .form-group
+          %label Customer ID
+          = f.text_field :customer_id, class: "form-control"
+        .form-group
+          %label Location
+          = f.text_field :location, class: "form-control"
+        .form-group
+          = f.submit "Ride Now", class: "btn btn-md btn-primary"

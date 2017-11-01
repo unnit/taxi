@@ -1,0 +1,21 @@
+.container
+  .flash-messages{style: "color:blue;font-size:20px;"}
+  .col-sm-12
+    %h2
+      Driver App - driver id:
+      = params[:id]
+    .col-sm-4.text-center.border-right.min-height1000
+      %h3.border-bottom Waiting
+      .waiting-req-wrapper{data: {driver_id: "#{@driver.id}"}}
+        - @waiting_requests.each do |waiting_request|
+          = render partial: "requests/waiting_request", locals: {waiting_request: waiting_request, driver_id: @driver.id}
+    .col-sm-4.text-center.border-right.min-height1000
+      %h3.border-bottom Ongoing
+      .ongoing-req-wrapper{class: "ongoing-driver-#{@driver.id}"}
+        - @ongoing_requests.each do |ongoing_request|
+          = render partial: "requests/ongoing_request", locals: {ongoing_request: ongoing_request, driver_id: @driver.id}
+    .col-sm-4.text-center.min-height1000
+      %h3.border-bottom Completed
+      .completed-req-wrapper{class: "completed-driver-#{@driver.id}"}
+        - @completed_requests.each do |completed_request|
+          = render partial: "requests/completed_request", locals: {completed_request: completed_request}

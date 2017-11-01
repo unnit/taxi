@@ -1,0 +1,12 @@
+.col-sm-12{class: "waiting-#{waiting_request.id} request-cover"}
+  Request ID:
+  = waiting_request.id
+  %br
+  Customer ID:
+  = waiting_request.customer_id
+  %br
+  Requested at (ago):
+  = time_ago_in_words(waiting_request.created_at)
+  %br
+  = link_to accept_request_path(waiting_request.id, driver_id: driver_id), class: "j-accept-link", style: "display: #{@ongoing_requests.present? ? 'none' : ''}", remote: true do
+    .btn.btn-sm.btn-primary Accept
